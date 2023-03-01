@@ -5,15 +5,18 @@ import ChatFooter from './ChatFooter';
 import {Socket} from "socket.io-client";
 import {Message} from "../Message";
 const ChatPage = ({ socket } : {socket: Socket}) => {
-
     const [messages, setMessages] = useState<Message[]>([]);
     useEffect(() => {
         socket.on('messageResponse', (data) => setMessages([...messages, data]));
     }, [socket, messages]);
 
+    useEffect(() => {
+        socket.on('newUser', (data) => setMessages([...messages, data]));
+    }, [socket, messages]);
+
     return (
         <div className="chat">
-            <ChatBar />
+            <ChatBar socket={socket} />
             <div className="chat__main">
                 <ChatBody messages={messages} />
                 <ChatFooter socket={socket} />
