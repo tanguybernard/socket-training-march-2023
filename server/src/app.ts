@@ -1,6 +1,8 @@
 import express from 'express';
 
 import {Server, Socket} from "socket.io";
+import {Connection} from "./Connection";
+import {UserService} from "./UserService";
 
 
 const app = express();
@@ -27,16 +29,11 @@ const io = new Server(http, {
     }
 });
 
-io.on("connection", (socket: Socket) => {
+const userService = new UserService();
+io.on('connection', (socket: Socket) => {
     console.log(`⚡: ${socket.id} user just connected!`);
-
-    //Listens and logs the message to the console
-    socket.on('message', (data) => {
-        console.log(data);
-        //sends the message to all the users on the server
-        io.emit('messageResponse', data);
-    });
-    socket.on('disconnect', () => {
-        console.log('🔥: A user disconnected');
-    });
+    new Connection(io, socket,userService);
 });
+
+
+
