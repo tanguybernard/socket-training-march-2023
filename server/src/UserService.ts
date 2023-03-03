@@ -6,7 +6,7 @@ export class UserService {
     constructor(public users: User[] = [] ) {
     }
 
-    addUser(user){
+    addUser(user: User){
         this.users.push(user);
         return this.users
     }
