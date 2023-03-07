@@ -4,21 +4,25 @@ import './App.css';
 
 import { io } from "socket.io-client";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "./components/Home";
+import Login from "./components/Login";
 import ChatPage from "./pages/ChatPage";
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Header/Navbar";
 const socket = io('http://localhost:4000');
-
 
 function App() {
     return (
+
         <BrowserRouter>
-            <div>
-                <Routes>
-                    <Route path="/" element={<Home socket={socket} />}></Route>
-                    <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
-                </Routes>
-            </div>
-        </BrowserRouter>
+                <Navbar />
+                <div>
+                    <Routes>
+                        <Route path="/" element={<Login socket={socket} />}></Route>
+                        <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
+                        <Route path="/home" element={<HomePage />}></Route>
+                    </Routes>
+                </div>
+            </BrowserRouter>
     );
 }
 export default App;

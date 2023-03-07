@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Socket} from "socket.io-client";
-const Home = ({socket}: {socket: Socket}) => {
+const Login = ({socket}: {socket: Socket}) => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const handleSubmit = (e: any) => {
@@ -9,7 +9,7 @@ const Home = ({socket}: {socket: Socket}) => {
         localStorage.setItem('userName', userName);
         //sends the username and socket ID to the Node.js server
         socket.emit('newUser', {userName, socketId: socket.id});
-        navigate('/chat');
+        navigate('/home');
     };
     return (
         <form className="home__container" onSubmit={handleSubmit}>
@@ -28,4 +28,4 @@ const Home = ({socket}: {socket: Socket}) => {
         </form>
     );
 };
-export default Home;
+export default Login;
