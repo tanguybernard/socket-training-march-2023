@@ -8,13 +8,13 @@ import Login from "./components/Login";
 import ChatPage from "./pages/ChatPage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Header/Navbar";
-const socket = io('http://localhost:4000');
+const socket = io(process.env.REACT_APP_SOCKET_URL as string);
 
 function App() {
     return (
 
         <BrowserRouter>
-                <Navbar />
+            <Navbar />
                 <div>
                     <Routes>
                         <Route path="/" element={<Login socket={socket} />}></Route>
