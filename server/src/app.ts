@@ -6,7 +6,7 @@ import {UserService} from "./UserService";
 
 
 const app = express();
-const PORT = 4000;
+
 
 const http = require('http').Server(app);
 const cors = require('cors');
@@ -19,9 +19,7 @@ app.get('/api', (req, res) => {
     });
 });
 
-http.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-});
+
 
 const io = new Server(http, {
     cors: {
@@ -37,3 +35,4 @@ io.on('connection', (socket: Socket) => {
 
 
 
+export default http;

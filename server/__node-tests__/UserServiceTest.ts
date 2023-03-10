@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from "node:assert";
-import {UserService} from "../UserService";
+import {UserService} from "../src/UserService";
 
 test('UserService', () => {
     //before
