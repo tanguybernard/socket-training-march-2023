@@ -10,13 +10,14 @@ export class Connection {
 
     }
 
-    //Listens and logs the message to the console
+    //TODO Typer data
     handleMessage(data) {
         console.log(data);
         this.sendMessage(data);
     }
 
 
+    //TODO Typer data
     sendMessage(data) {
         this.io.emit('messageResponse', data);
     }
@@ -30,6 +31,7 @@ export class Connection {
     }
 
 
+    //TODO Typer user
     private handleUser(user) {
         const users = this.userService.addUser(user);
         console.log('newUSer', users)

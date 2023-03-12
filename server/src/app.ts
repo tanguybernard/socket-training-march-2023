@@ -30,7 +30,7 @@ const io = new Server(http, {
 const userService = new UserService();
 io.on('connection', (socket: Socket) => {
     console.log(`⚡: ${socket.id} user just connected!`);
-    new Connection(io, socket,userService);
+    new Connection(io, socket, userService);
 });
 
 

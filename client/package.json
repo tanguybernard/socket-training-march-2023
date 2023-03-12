@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
-    "mock-socket": "^9.2.1"
+    "mock-socket": "^9.2.1",
+    "nock": "^13.3.0"
   }
 }

@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Socket} from "socket.io-client";
-import {Message} from "../Message";
 const ChatBar = ({ socket } : {socket: Socket}) => {
 
+    //TODO replace any to Type
     const [users, setUsers] = useState<any[]>([]);
 
 
     useEffect(() => {
+        //TODO Typer data
         socket.on('newUserResponse', (data) => {
             setUsers(data)
         });

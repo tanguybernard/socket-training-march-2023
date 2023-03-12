@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getMedicalRecords, ResponseApiPost} from "../api/services/MedicalRecord";
-
+import {Card} from "../components/Card/Card";
+import folderImg from "../assets/folder.png";
 
 const HomePage = () => {
 
@@ -43,11 +44,11 @@ const HomePage = () => {
             {error && (
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
-            <ul>
+            <ul className="cards">
                 {medicalRecords.length > 0 &&
                     medicalRecords.map(({ id, title }) => (
-                        <li key={id}>
-                            <p>{title}</p>
+                        <li className="cards__item" key={id}>
+                            <Card title={title} description={"My Description"} imgUrl={folderImg}/>
                         </li>
                     ))}
             </ul>
