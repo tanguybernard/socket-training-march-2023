@@ -23,7 +23,7 @@ app.get('/api', (req, res) => {
 
 const io = new Server(http, {
     cors: {
-        origin: "http://localhost:3000"
+        origin: '*'//"http://localhost:3000"
     }
 });
 
